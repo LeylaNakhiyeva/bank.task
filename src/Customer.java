@@ -22,6 +22,6 @@ public class Customer {
     }
     @Override
     public String toString(){
-        return "name: "+getName() +"id: "+getId()+ "balans: "+account.getBalance();
+        return "name: "+name +"id: "+id+"\n";
     }
 }
