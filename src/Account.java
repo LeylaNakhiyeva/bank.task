@@ -9,8 +9,4 @@ public class Account {
     }public static void addDeposite(double amount){
 
     }
-//    @Override
-//    public String toString(){
-//        return "Balance: "+balance;
-//    }
 }
