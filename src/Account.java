@@ -1,5 +1,5 @@
 public class Account {
-    private double balance=0;
+    private double balance;
     public double getBalance(){
         return this.balance;
     }
@@ -9,8 +9,8 @@ public class Account {
     }public static void addDeposite(double amount){
 
     }
-    @Override
-    public String toString(){
-        return "Balance: "+balance;
-    }
+//    @Override
+//    public String toString(){
+//        return "Balance: "+balance;
+//    }
 }
