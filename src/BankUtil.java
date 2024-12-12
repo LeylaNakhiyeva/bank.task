@@ -7,6 +7,7 @@ public class BankUtil {
     public static void addAccount(Account account){
         Bank.accounts[Bank.accountCount++]=account;
     }
+
     public static void createAccount(){
         Scanner sc= new Scanner(System.in);
         Account account= new Account();
@@ -30,32 +31,47 @@ public class BankUtil {
 //            System.out.println("name: "+customer.getName());
 //        }
 //    }
-    public static void addDeposite(double amount){
+    public static void addDeposite(String id, double amount){
+        boolean check=false;
         for (int i=0; i<Bank.accountCount; i++){
+            Customer customer= Bank.customers[i];
+            if (id.equals(customer.getId())){
             Account account=Bank.accounts[i];
             if(amount>0){
-                System.out.println("ilk balans: "+account.getBalance());
+                System.out.println("first balance: "+account.getBalance());
                 double balance=account.getBalance();
                 balance+=amount;
                 account.setBalance(balance);
                 System.out.println("New balance: "+account.getBalance());
-
+                check=true;
             }
-            else System.out.println("The information is incorrect");
-        }
+            else System.out.println("Balance must be positive!");
+        }}
+            if (check) System.out.println("Successful deposit!");
+            else System.out.println("Invalid deposit!");
+
     }
-    public static void transferMoney(double amount){
+    public static void transferMoney(String id, double amount){
+        boolean check= false;
         for (int i=0; i<Bank.accountCount; i++){
+            Customer customer=Bank.customers[i];
+            if (id.equals(customer.getId())){
             Account account= Bank.accounts[i];
             if (amount>0 && amount<=account.getBalance()){
-                System.out.println("ilk balans: "+account.getBalance());
+                System.out.println("first balance: "+account.getBalance());
                 double balance= account.getBalance();
                 balance-=amount;
                 account.setBalance(balance);
-                System.out.println("Balans after transfer: "+account.getBalance());
+                System.out.println("Balance after transfer: "+account.getBalance());
+                check= true;
             }
-            else System.out.println("The information is incorrect or balance is not enough!");
+            else if (amount<0)System.out.println("Balance must be positive!");
+            else System.out.println("Balance is not enough!");
+            }
+
         }
+        if (check) System.out.println("Successful transfer!");
+        else System.out.println("Invalid transfer!");
     }
     public static void totalDeposit(){
         double totalDeposit=0;
